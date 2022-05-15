@@ -1,0 +1,20 @@
+name: 'Keep a Changelog Parser Action'
+description: 'GitHub Action for reading a specific version from a Keep a Changelog file.'
+author: 'zogot'
+branding:
+  icon: align-left
+  color: green
+inputs:
+  path:
+    description: 'The path to the Changelog file. Including filename'
+    default: '/github/workspace/CHANGELOG.md'
+    required: false
+  version:
+    description: 'The version number being looked for. Must be a valid SemVer version'
+    required: true
+outputs:
+  release:
+    description: 'The release contents of Changelog for the supplied version'
+runs:
+  using: 'docker'
+  image: 'docker://ghcr'
