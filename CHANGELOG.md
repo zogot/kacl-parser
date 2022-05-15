@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Security
 
+## [0.0.6] - 2022-05-15
+### Changed
+- Changed name of the event for dispatch
+### Fixed
+- Fixed incorrect client payload values in dispatch and create release
+
 ## [0.0.5] - 2022-05-15
 ### Added
 - Added new Create Release workflow

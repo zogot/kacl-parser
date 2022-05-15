@@ -2,7 +2,7 @@ name: Create Release
 
 on:
   repository_dispatch:
-    types: [release]
+    types: [published-version]
 
 jobs:
   create-release:
@@ -13,13 +13,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          ref: 'tags/${{ github.event.client_payload.version }}'
+          ref: '${{ github.event.client_payload.ref }}'
 
       - name: Extract Release Notes
         id: kacl
         uses: zogot/kacl-parser@0.0.4
         with:
-          version: ${{ github.event.client_payload.version }}
+          version: ${{ github.event.client_payload.ref_name }}
 
       - name: GH Release
         id: create_release

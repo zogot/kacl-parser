@@ -40,5 +40,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
-          event-type: release
-          client-payload: '{"version": "${{ github.ref }}"}'
+          event-type: published-version
+          client-payload: '{"ref": "${{ github.ref }}", "ref_name": "${{ github.ref_name }}"}'
