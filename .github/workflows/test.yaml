@@ -1,0 +1,17 @@
+name: 'Test'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-action:
+    name: 'Test Action'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Extract version'
+        id: extract
+        uses: 'zogot/kacl-parser@v0.0.3'
+        with:
+          version: ${{ github.ref_name }}
+      - name: 'See extracted version'
+        run: echo "${{ steps.extract.release }}"
