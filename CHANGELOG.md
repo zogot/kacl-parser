@@ -6,7 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Added README.md
 ### Changed
+- Changed the create-github-release workflow. Working out if it even works this way
 ### Deprecated
 ### Removed
 ### Fixed
