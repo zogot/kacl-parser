@@ -20,4 +20,4 @@ jobs:
         with:
           version: ${{ github.event.inputs.version }}
       - name: 'See extracted version'
-        run: echo "${{ steps.extract.release }}"
+        run: echo "${{ steps.extract.outputs.release }}"
