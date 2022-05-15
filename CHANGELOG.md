@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Security
 
-## [0.0.4]
+## [0.0.4] - 2022-05-15
 ### Added
 - Added README.md
 - Added Test workflow to manually run
