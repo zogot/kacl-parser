@@ -9,6 +9,7 @@
   "license": "ISC",
   "scripts": {
     "start": "ts-node src/main.ts",
+    "test": "jest",
     "test:watch": "jest --watch",
     "build": "rimraf dist/* && tsc"
   },

@@ -17,11 +17,16 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm ci
+RUN npm ci --omit=dev
 
 # Final step
 FROM node:18-alpine
 WORKDIR /app
+
+LABEL org.opencontainers.image.title="Keep a Changelog Parser" \
+    org.opencontainers.image.description="Parses a provided path to a Keep a Changelog file and returns the contents" \
+    org.opencontainers.image.authors="Leon Rowland <leon@rowland.nl>" \
+    org.opencontainers.image.url="https://github.com/zogot/kacl-parser"
 
 USER node
 

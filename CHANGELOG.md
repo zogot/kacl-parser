@@ -12,6 +12,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Security
 
+## [1.0.0] - 2022-05-15
+### Added
+- Added Test job to the Publish Workflow. Tests are now run before a release is made.
+- Added some labels to the Dockerfile
+### Changed
+- Changed Dockerfile to reduce the size of the docker image by ensuring no dev dependencies
+- Changed README to provide better content
+
 ## [0.0.7] - 2022-05-15
 ### Removed
 - Removed create-release workflow. Not detecting events. Trying as second job instead. Probably better.

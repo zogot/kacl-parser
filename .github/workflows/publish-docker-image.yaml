@@ -1,4 +1,4 @@
-name: 'Publish a Docker Image'
+name: Publish a Docker Image
 on:
   push:
     tags:
@@ -9,25 +9,47 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build-and-publish-docker-image:
-    name: 'Build and Publish Docker Image'
+  tests:
+    name: Run Tests
     runs-on: ubuntu-latest
 
     steps:
-      - name: 'Checkout repository'
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: 'Login to the Container Registry'
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm run test
+
+  build-and-publish-docker-image:
+    name: Build and Publish Docker Image
+    runs-on: ubuntu-latest
+
+    needs: tests
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Login to the Container Registry
         uses: docker/login-action@v2
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 'Setup Docker Buildx'
+      - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-      - name: 'Build and Publish'
+      - name: Build and Publish
         uses: docker/build-push-action@v2
         with:
           context: .
@@ -36,7 +58,7 @@ jobs:
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}
 
   create-release:
-    name: 'Create Release'
+    name: Create Release
     runs-on: ubuntu-latest
 
     needs: build-and-publish-docker-image
@@ -44,12 +66,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          ref: '${{ github.ref }}'
 
       - name: Extract Release Notes
         id: kacl
-        uses: zogot/kacl-parser@0.0.4
+        uses: zogot/kacl-parser@1.0.0 # no dynamic reference is possible for image names/tags in uses: key
         with:
           version: ${{ github.ref_name }}
 
@@ -58,10 +78,3 @@ jobs:
         uses: softprops/action-gh-release@v0.1.14
         with:
           body: ${{ steps.kacl.outputs.release }}
-
-      - name: Publish Release
-        uses: StuYarrow/publish-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          id: ${{ steps.create_release.outputs.id }}

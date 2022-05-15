@@ -1,33 +1,38 @@
 # zogot/kacl-parser
 
-This action extracts the specified release from a provided Keep a Changelog file.
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/zogot/kacl-parser/Publish%20a%20Docker%20Image)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/zogot/kacl-parser)
 
-## Inputs
+This docker image extracts the specified release from a provided Keep a Changelog file.
 
-## `path`
+Can also be used directly as an image published to GitHub Packages: https://github.com/zogot/kacl-parser/pkgs/container/kacl-parser
 
-The path to the Changelog file. Including filename.
+## Usage as GitHub Action
 
-*Default* `/github/workspace/CHANGELOG.md`
+You can use this repository as a Docker Action that can be combined with other Docker actions to get you the specific
+Changelog Release contents that you can append to specific files or, for example, to the GitHub Release body contents.
 
-## `version`
+### Inputs
 
-**Required** The version you wish to extract from your Changelog. Should match the SemVer string
-in the Changelog Release section.
+| Name          | Description                                                                                                                     | Required | Default                        |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------|----------|--------------------------------|
+| version       | The version that you wish to extract from the Changelog. Should be a SemVer version. Supports with or without 'v'               | Yes      |                                |
+| path          | The path to the Changelog file. Including the filename. By default it uses the path from the mounted directory from a checkout. | No       | /github/workspace/CHANGELOG.md |
+| halt-on-error | If it should halt on error? Default is true. If false, and an error is given, an empty string is provided in place of errors    | No       | true                           |
 
-## Outputs
+### Outputs
 
-## `release`
+| Name    | Description                                                      |
+|---------|------------------------------------------------------------------|
+| release | The contents of the release if it exists. Else it will return '' |
 
-The contents of that release changelog.
-
-## Example usage
+### Example usage
 
 ```
 steps:
   - name: Extract version
     id: kacl
-    uses: zogot/kacl-parser@v0.0.3
+    uses: zogot/kacl-parser@1.0.0
     with:
       version: ${{ github.ref_name }}
     
