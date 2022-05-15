@@ -10,8 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Deprecated
 ### Removed
 ### Fixed
-- Attempting to fix workflow file
 ### Security
+
+## [0.0.3] - 2022-05-15
+### Fixed
+- Attempting to fix workflow file
 
 ## [0.0.2] - 2022-05-15
 ### Added
