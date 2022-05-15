@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: 'Extract version'
         id: extract
-        uses: 'zogot/kacl-parser@v0.0.3'
+        uses: 'zogot/kacl-parser@0.0.3'
         with:
           version: ${{ github.ref_name }}
       - name: 'See extracted version'
