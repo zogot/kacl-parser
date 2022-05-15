@@ -8,6 +8,8 @@ jobs:
     name: 'Test Action'
     runs-on: ubuntu-latest
     steps:
+      - name: 'Checkout repository'
+        uses: actions/checkout@v3
       - name: 'Extract version'
         id: extract
         uses: 'zogot/kacl-parser@0.0.3'
