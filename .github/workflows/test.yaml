@@ -2,6 +2,10 @@ name: 'Test'
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'The version to look for'
+        required: true
 
 jobs:
   test-action:
@@ -14,6 +18,6 @@ jobs:
         id: extract
         uses: 'zogot/kacl-parser@0.0.3'
         with:
-          version: ${{ github.ref_name }}
+          version: ${{ github.event.inputs.version }}
       - name: 'See extracted version'
         run: echo "${{ steps.extract.release }}"
