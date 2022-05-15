@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Security
 
+## [0.0.2] - 2022-05-15
+### Added
+- Initial workflow that will create a release AND use this package to add to it
+### Fixed
+- Fixed missing parts of the action.yaml
+
 ## [0.0.1] - 2022-05-15
 ### Added
 - Initial development release
