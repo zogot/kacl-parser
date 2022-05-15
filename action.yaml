@@ -17,7 +17,7 @@ outputs:
     description: 'The release contents of Changelog for the supplied version'
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/zogot/kacl-parser:0.0.1'
+  image: 'docker://ghcr.io/zogot/kacl-parser:0.0.4'
   args:
     - ${{ inputs.path }}
     - ${{ inputs.version }}

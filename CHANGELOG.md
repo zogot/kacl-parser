@@ -6,14 +6,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Added README.md
-- Added Test workflow to manually run
 ### Changed
 ### Deprecated
 ### Removed
-- Removed the 'create release' workflow
 ### Fixed
 ### Security
+
+## [0.0.4]
+### Added
+- Added README.md
+- Added Test workflow to manually run
+### Removed
+- Removed the 'create release' workflow
+### Fixed
+- Fixed issue with multiline responses
 
 ## [0.0.3] - 2022-05-15
 ### Fixed
